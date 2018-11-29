@@ -1,7 +1,25 @@
 {
   "name": "simple-dependency-injection",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Dependecy injection framework for get a better organized code without focused on object creation",
+  "keywords": [
+    "symfony",
+    "simple",
+    "dependency-injection",
+    "dependency",
+    "injection",
+    "container"
+  ],
+  "author": "Ulas ATILA",
+  "license": "ISC",
+  "homepage": "https://github.com/ulas-atila/simple-dependency-injection#readme",
+  "bugs": {
+    "url": "https://github.com/ulas-atila/simple-dependency-injection/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:ulas-atila/simple-dependency-injection.git"
+  },
   "main": "container.js",
   "dependencies": {
     "js-yaml": "^3.12.0"
