@@ -1,0 +1,20 @@
+parameters:
+    paramA: "paramA"
+    paramB: "paramB"
+services:
+    serviceA:
+        file: "/a"
+        arguments: ["@serviceB"]
+    serviceB:
+        file: "/b_c"
+        class: 'B'
+        arguments: ["@serviceC", "%paramA"]
+        tags: ['a tag']
+    serviceC:
+        file: "/b_c"
+        class: 'C'
+        arguments: ["%paramB"]
+        tags: ['a tag']
+    serviceD:
+        file: "/d"
+        arguments: ["*a tag"]

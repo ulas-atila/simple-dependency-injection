@@ -1,0 +1,15 @@
+{
+  "name": "simple-dependency-injection",
+  "version": "1.0.0",
+  "description": "Dependecy injection framework for get a better organized code without focused on object creation",
+  "main": "container.js",
+  "dependencies": {
+    "js-yaml": "^3.12.0"
+  },
+  "scripts": {
+    "test": "mocha test"
+  },
+  "devDependencies": {
+    "mocha": "^5.2.0"
+  }
+}
