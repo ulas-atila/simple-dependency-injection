@@ -1,1 +1,1 @@
-return require('container');
+module.exports = require('./container');

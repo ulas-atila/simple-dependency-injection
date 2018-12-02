@@ -1,7 +1,11 @@
 const utils = require('./utils');
+const process = require('process');
 
 module.exports = class {
-    constructor(file, baseApp = '') {
+    constructor(file, baseApp = null) {
+        if (baseApp === null) {
+            baseApp = process.cwd();
+        }
         const data = utils.getFile(file, baseApp);
         this.services = data.services;
         this.parameters = data.parameters;

@@ -1,6 +1,5 @@
 const fs   = require('fs');
 const path = require('path');
-const process = require('process');
 const yaml = require('js-yaml');
 
 function promisify(func) {
@@ -18,7 +17,7 @@ function promisify(func) {
 }
 
 function getRelativePath(absolutePath, prefix) {
-    return path.join(process.cwd(), prefix + absolutePath);
+    return path.join(prefix, absolutePath);
 }
 
 function getFile(file, prefix) {

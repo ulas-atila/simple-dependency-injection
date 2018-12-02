@@ -6,7 +6,7 @@ let service;
 
 describe('Container', function() {
     beforeEach(function(done) {
-        container = new Container('/services.yaml', '/test/data');
+        container = new Container('/services.yaml', __dirname + '/data');
         done();
     });
     it('paramA should equal to "paramA"', function() {
