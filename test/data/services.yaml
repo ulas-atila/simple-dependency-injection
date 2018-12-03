@@ -1,3 +1,5 @@
+include:
+    - /include.json
 parameters:
     paramA: "paramA"
     paramB: "paramB"
@@ -15,6 +17,3 @@ services:
         class: 'C'
         arguments: ["%paramB"]
         tags: ['a tag']
-    serviceD:
-        file: "/d"
-        arguments: ["*a tag"]

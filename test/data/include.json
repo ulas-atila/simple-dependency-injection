@@ -1,0 +1,8 @@
+{
+    "services": {
+        "serviceD": {
+            "file": "/d",
+            "arguments": ["*a tag"]
+        }
+    }
+}

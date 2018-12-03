@@ -6,11 +6,21 @@ module.exports = class {
         if (baseApp === null) {
             baseApp = process.cwd();
         }
-        const data = utils.getFile(file, baseApp);
-        this.services = data.services;
-        this.parameters = data.parameters;
+        this.services = {};
+        this.parameters = {};
+        this.readFile(file, baseApp);
         this.baseApp = baseApp;
         this.cache = {'@container': this};
+    }
+    readFile(file, baseApp) {
+        const data = utils.getFile(file, baseApp);
+        this.services = {...this.services, ...data.services};
+        this.parameters = {...this.parameters, ...data.parameters};
+        if (data.include) {
+            data.include.forEach((subFile) => {
+                this.readFile(subFile, baseApp);
+            });
+        }
     }
     get(name) {
         if (name in this.cache) {
