@@ -6,7 +6,7 @@ parameters:
 services:
     serviceA:
         file: "/a"
-        arguments: ["@serviceB"]
+        arguments: ["@serviceB", "@context"]
     serviceB:
         file: "/b_c"
         class: 'B'

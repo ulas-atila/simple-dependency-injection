@@ -1,18 +1,26 @@
-class B {
-    constructor(c, param) {
+"use strict";
+
+class B
+{
+    constructor(c, param)
+    {
         this.c = c;
         this.param = param;
     }
-    log() {
+    log()
+    {
         return `${this.c.log()} - ${this.param} - B`;
     }
 }
 
-class C {
-    constructor(param) {
+class C
+{
+    constructor(param)
+    {
         this.param = param;
     }
-    log() {
+    log()
+    {
         return `${this.param} - C`;
     }
 }

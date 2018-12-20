@@ -1,6 +1,6 @@
 {
   "name": "simple-dependency-injection",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "Dependecy injection framework for get a better organized code without focused on object creation",
   "keywords": [
     "symfony",

@@ -1,18 +1,24 @@
+"use strict";
+
 const utils = require('./utils');
 const process = require('process');
 
-module.exports = class {
-    constructor(file, baseApp = null) {
+module.exports = class Container
+{
+    constructor(file, baseApp = null)
+    {
         if (baseApp === null) {
             baseApp = process.cwd();
         }
         this.services = {};
         this.parameters = {};
+        this.context = {};
         this.readFile(file, baseApp);
         this.baseApp = baseApp;
-        this.cache = {'@container': this};
+        this.clearCache();
     }
-    readFile(file, baseApp) {
+    readFile(file, baseApp)
+    {
         const data = utils.getFile(file, baseApp);
         this.services = {...this.services, ...data.services};
         this.parameters = {...this.parameters, ...data.parameters};
@@ -22,7 +28,17 @@ module.exports = class {
             });
         }
     }
-    get(name) {
+    clearCache()
+    {
+        this.cache = {
+            'container': this,
+            'context': Object.freeze({
+                ...this.context
+            })
+        };
+    }
+    get(name)
+    {
         if (name in this.cache) {
             return this.cache[name];
         }
@@ -49,10 +65,8 @@ module.exports = class {
 
         return obj;
     }
-    getParameter(name) {
-        return this.parameters[name];
-    }
-    getTaggedServices(tag) {
+    getTaggedServices(tag)
+    {
         const services = [];
         for(const serviceName in this.services) {
             const service = this.services[serviceName];
@@ -63,7 +77,8 @@ module.exports = class {
 
         return services;
     }
-    _convertArguments(_args) {
+    _convertArguments(_args)
+    {
         return _args.map(arg => {
             if (arg[0] == "@") {
                 return this.get(arg.substr(1));
@@ -77,5 +92,24 @@ module.exports = class {
 
             return arg;
         });
+    }
+    getParameter(name)
+    {
+        return this.parameters[name];
+    }
+    setContextParameter(parameter, value)
+    {
+        this.context[parameter] = value;
+        this.clearCache();
+    }
+    setContext(context)
+    {
+        this.context = context;
+        this.clearCache();
+    }
+    clearContext()
+    {
+        this.context = {};
+        this.clearCache();
     }
 }

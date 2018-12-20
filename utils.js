@@ -1,8 +1,11 @@
+"use strict";
+
 const fs   = require('fs');
 const path = require('path');
 const yaml = require('js-yaml');
 
-function promisify(func) {
+function promisify(func)
+{
     return function(...args) {
         return new Promise((resolve, reject) => {
             args.push((error, data) => {
@@ -16,11 +19,13 @@ function promisify(func) {
     }
 }
 
-function getRelativePath(absolutePath, prefix) {
+function getRelativePath(absolutePath, prefix)
+{
     return path.join(prefix, absolutePath);
 }
 
-function getFile(file, prefix) {
+function getFile(file, prefix)
+{
     const format = file.split('.').pop();
     const data = fs.readFileSync(getRelativePath(file, prefix), 'utf8');
     if (format == 'yml' || format == 'yaml') {
